@@ -18,7 +18,7 @@ describe FundCalculator do
 
   describe 'findBestMonth' do
     it "returns highest performing month" do
-      expect(fund.findBestMonth).to eq(1.80)
+      expect(fund.findBestMonth).to eq("1.80")
     end
   end
 end
