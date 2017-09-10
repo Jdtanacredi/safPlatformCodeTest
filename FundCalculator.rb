@@ -1,3 +1,5 @@
+# require 'bigdecimal'
+
 class FundCalculator
   def initialize(path)
     # Data needed for each fund
@@ -10,21 +12,28 @@ class FundCalculator
       end
       @company = fundTextLines[0]
       @year = fundTextLines[1]
-      @months = fundTextLines[2].split(',')
+      @months = fundTextLines[2].split(',').map { |month| month.to_f  }
     end
   end
 
   # returns cumulative return
   def calculateCumulativeReturn
-    # testing initialize values info
-    puts 'company: ' + @company
-    puts 'year: ' + @year
-    puts @months[3]
+    @months.reduce(0, :+)
   end
 
   # returns % postive months
   def calculatePositiveMonths
+    # find all positive months
+    positiveMonths = @months.select do |month|
+      month > 0
+    end
 
+    # hacky fix for now without BigDecimal
+    sprintf("%.5s", (positiveMonths.length.to_f / @months.length.to_f) * 100).to_f
+
+    # percentPositive = (positiveMonths.length.to_f / @months.length.to_f) * 100
+    # truncatedPercentPositive = BigDecimal::new(percentPositive.to_s).truncate(2).to_f
+    # puts truncatedPercentPositive
   end
 
   # returns best performing month
@@ -38,7 +47,7 @@ ARGV.each do |path|
   # throwError here if more than 1 argument passed through terminal
 
   fund = FundCalculator.new(path)
-  fund.calculateCumulativeReturn
+  fund.calculatePositiveMonths
 end
 
 # Bloomberg Barclays US Aggregate Bond TR USD
