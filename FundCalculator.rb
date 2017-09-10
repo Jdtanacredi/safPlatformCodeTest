@@ -20,21 +20,21 @@ class FundCalculator
   end
 
   def calculateCumulativeReturn
-    sprintf("%.2f", @months.reduce(0, :+))
+    sprintf('%.2f', @months.reduce(0, :+))
   end
 
   def calculatePositiveMonths
     positiveMonths = @months.select do |month|
       month > 0
     end
-    sprintf("%.5s", (positiveMonths.length.to_f / @months.length.to_f) * 100).to_f
+    sprintf('%.5s', (positiveMonths.length.to_f / @months.length.to_f) * 100)
     # BigDecimal option below:
     # percentPositive = (positiveMonths.length.to_f / @months.length.to_f) * 100
     # BigDecimal::new(percentPositive.to_s).truncate(2).to_f
   end
 
   def findBestMonth
-    sprintf("%.2f", @months.max)
+    sprintf('%.2f', @months.max)
   end
 
   def printResults

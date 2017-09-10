@@ -6,13 +6,13 @@ describe FundCalculator do
   describe "calculateCumulativeReturn" do
     it "returns month percentages added together" do
       # TODO seems to be off by .03 ... come back and fix
-      # expect(fund.calculateCumulativeReturn).to eq(2.66)
+      # expect(fund.calculateCumulativeReturn).to eq("2.66")
     end
   end
 
   describe 'calculatePositiveMonths' do
     it "returns % of positive months" do
-      expect(fund.calculatePositiveMonths).to eq(66.66)
+      expect(fund.calculatePositiveMonths).to eq("66.66")
     end
   end
 
