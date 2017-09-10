@@ -6,11 +6,16 @@ class FundCalculator
       fundTextLines = f.map do |line|
         line.strip
       end
+
       @company = fundTextLines[0]
-      # Make sure year is length of 4
       @year = fundTextLines[1]
-      # Make sure months formatting is proper
       @months = fundTextLines[2].split(',').map { |month| month.to_f  }
+      if @year.length != 4
+        raise RuntimeError.new('invalid year provided')
+      end
+      if @months.length != 12
+        raise RuntimeError.new('must have 12 months of data')
+      end
     end
   end
 
@@ -22,14 +27,12 @@ class FundCalculator
     positiveMonths = @months.select do |month|
       month > 0
     end
-    #fix for now without BigDecimal
     sprintf("%.5s", (positiveMonths.length.to_f / @months.length.to_f) * 100).to_f
+    # BigDecimal option below:
     # percentPositive = (positiveMonths.length.to_f / @months.length.to_f) * 100
-    # truncatedPercentPositive = BigDecimal::new(percentPositive.to_s).truncate(2).to_f
-    # puts truncatedPercentPositive
+    # BigDecimal::new(percentPositive.to_s).truncate(2).to_f
   end
 
-  # returns best performing month
   def findBestMonth
     sprintf("%.2f", @months.max)
   end
