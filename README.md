@@ -4,7 +4,7 @@ This program analyzes the fund passed in and provides you with data on that spec
 
 To run the terminal fund calculator call the ruby file termFundCalculator with the filepath to the fund as an argument:
 
-`termFundCalculator ./input_one.txt`
+`ruby termFundCalculator ./input_one.txt`
 
 ## Testing
 
