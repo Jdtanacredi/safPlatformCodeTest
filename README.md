@@ -8,6 +8,6 @@ To run the terminal fund calculator call the ruby file termFundCalculator with t
 
 ## Testing
 
-to run the tests for FundCalculator simply run the rspec command from the root folder. You can also call the file specifically with the command below:
+To run the tests for FundCalculator simply run the rspec command from the root folder. You can also call the file specifically with the command below:
 
 `rspec FundCalculator_spec.rb`
