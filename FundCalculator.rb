@@ -2,10 +2,6 @@
 
 class FundCalculator
   def initialize(path)
-    # Data needed for each fund
-    #Title
-    #Year
-    #months
     File.open(path) do |f|
       fundTextLines = f.map do |line|
         line
@@ -38,7 +34,7 @@ class FundCalculator
 
   # returns best performing month
   def findBestMonth
-
+    @months.max
   end
 
 end
@@ -47,7 +43,11 @@ ARGV.each do |path|
   # throwError here if more than 1 argument passed through terminal
 
   fund = FundCalculator.new(path)
-  fund.calculatePositiveMonths
+
+  # TODO move into FundCalculator as a function
+  # puts 'Cumulative Return: ' + fund.calculateCumulativeReturn
+  # puts '% Positive Months: ' + fund.calculatePositiveMonths
+  # puts 'Best Month: ' + fund.findBestMonth
 end
 
 # Bloomberg Barclays US Aggregate Bond TR USD
