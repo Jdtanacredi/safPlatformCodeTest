@@ -4,11 +4,22 @@ class FundCalculator
     #Title
     #Year
     #months
+    File.open(path) do |f|
+      fundTextLines = f.map do |line|
+        line
+      end
+      @company = fundTextLines[0]
+      @year = fundTextLines[1]
+      @months = fundTextLines[2].split(',')
+    end
   end
 
   # returns cumulative return
   def calculateCumulativeReturn
-    puts 'testing class method call'
+    # testing initialize values info
+    puts 'company: ' + @company
+    puts 'year: ' + @year
+    puts @months[3]
   end
 
   # returns % postive months
