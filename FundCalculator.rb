@@ -11,10 +11,10 @@ class FundCalculator
       @year = fundTextLines[1]
       @months = fundTextLines[2].split(',').map { |month| month.to_f  }
       if @year.length != 4
-        raise RuntimeError.new('invalid year provided')
+        raise RuntimeError.new('Invalid year provided')
       end
       if @months.length != 12
-        raise RuntimeError.new('must have 12 months of data')
+        raise RuntimeError.new('Must have 12 months of data')
       end
     end
   end
